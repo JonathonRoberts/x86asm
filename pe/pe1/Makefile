@@ -5,25 +5,16 @@ ASFLAGS +=-f elf
 LDFLAGS=
 CSOURCES = main.c
 OBJECTS=$(SOURCES:.c=.o)
-#OBJECTS+=$(ASSOURCES:.asm=.o)
-EXECUTABLE=pe2
+OBJECTS+=$(ASSOURCES:.asm=.o)
+EXECUTABLE=pe1
 
-all: .as $(EXECUTABLE) cleano
+all: .as $(EXECUTABLE)
 
 .as:
 	$(AS) $(ASFLAGS) *.asm
-.c.o:
-	    $(CC) $(CFLAGS) -o $@ -c $<
-.asm.o:
-	    $(CC) $(ASFLAGS) -o $@ -c $<
 
-$(EXECUTABLE): *.o
+$(EXECUTABLE): list35.o $(CSOURCES)
 	    $(CC) $(LDFLAGS) -o $@ $^
 
 clean:
 	rm $(EXECUTABLE) *.o
-cleano:
-	rm *.o
-
-
-

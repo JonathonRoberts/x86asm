@@ -8,22 +8,13 @@ OBJECTS=$(SOURCES:.c=.o)
 #OBJECTS+=$(ASSOURCES:.asm=.o)
 EXECUTABLE=pe2
 
-all: .as $(EXECUTABLE) cleano
+all: .as $(EXECUTABLE)
 
 .as:
 	$(AS) $(ASFLAGS) *.asm
-.c.o:
-	    $(CC) $(CFLAGS) -o $@ -c $<
-.asm.o:
-	    $(CC) $(ASFLAGS) -o $@ -c $<
 
-$(EXECUTABLE): *.o
+$(EXECUTABLE): fib.o $(CSOURCES)
 	    $(CC) $(LDFLAGS) -o $@ $^
 
 clean:
 	rm $(EXECUTABLE) *.o
-cleano:
-	rm *.o
-
-
-
