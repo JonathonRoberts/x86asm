@@ -9,6 +9,6 @@ main(){
          :"=a"(foo)
          :"a"(foo), "b"(bar), "c"(mult)
    );
-   printf("foo+bar=%d\n", foo);
+   printf("(10 + 15) * 2 =%d\n", foo);
    return 0;
 }
